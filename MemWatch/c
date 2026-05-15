@@ -1,2 +1,8 @@
 #include <stdio.h>
 #include <windows.h>
+
+typedef struct {
+    unsigned long long total_mem; // Use long long for large capacities
+    unsigned long long free_mem;
+    double cpu_usage;
+} SysSnap;
