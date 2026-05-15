@@ -6,3 +6,16 @@ typedef struct {
     unsigned long long free_mem;
     double cpu_usage;
 } SysSnap;
+
+void get_memory_info(SysSnap *snap) {
+    MEMORYSTATUSEX statex;
+    statex.dwLength = sizeof(statex);
+
+    if (GlobalMemoryStatusEx(&statex)) {
+        // Converting bytes to KB for compatibility with your structure
+        
+        snap->free_mem = statex. / 1024;
+    } else {
+        fprintf(stderr, "Ошибка получения данных о памяти\n");
+    }
+}
