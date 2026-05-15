@@ -16,6 +16,18 @@ void get_memory_info(SysSnap *snap) {
         
         snap->free_mem = statex. / 1024;
     } else {
-        fprintf(stderr, "Ошибка получения данных о памяти\n");
+        fprintf(stderr, "Error retrieving memory data.\n");
     }
+    int main() {
+    SysSnap current_stats = {0};
+    
+    printf("--- MemWatch v1.0 (Windows Edition) ---\n");
+    get_memory_info(&current_stats);
+    
+    
+    printf("Total RAM: %llu MB\n", current_stats.total_mem / 1024);
+    printf("Available Memory: %llu MB\n", current_stats.free_mem / 1024);
+    
+    return 0;
+}
 }
