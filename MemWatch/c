@@ -13,20 +13,20 @@ void get_memory_info(SysSnap *snap) {
 
     if (GlobalMemoryStatusEx(&statex)) {
         // Converting bytes to KB for compatibility with your structure
-        
-        snap->free_mem = statex. / 1024;
-    } else {
+        snap->total_mem = statex.ullTotalPhys / 1024;
+        snap->free_mem = statex.ullAvailPhys / 1024;
+    }
+    else {
         fprintf(stderr, "Error retrieving memory data.\n");
     }
-    int main() {
+   int main() {
     SysSnap current_stats = {0};
     
-    printf("--- MemWatch v1.0 (Windows Edition) ---\n");
+    printf("--- LittleWatcher v1.0 (Windows Edition) ---\n");
     get_memory_info(&current_stats);
     
-    
     printf("Total RAM: %llu MB\n", current_stats.total_mem / 1024);
-    printf("Available Memory: %llu MB\n", current_stats.free_mem / 1024);
+    printf("Available RAM: %llu MB\n", current_stats.free_mem / 1024);
     
     return 0;
 }
